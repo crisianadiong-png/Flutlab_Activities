@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+
+class Newsfeedcomponent extends StatelessWidget {
+  final String? username;
+  final String? status;
+  final String? numberoflikes;
+  final String? numberofcomments;
+  final String? numberofshares;
+  final String? timeposted;
+
+  const Newsfeedcomponent(
+      {super.key,
+      this.username,
+      this.status,
+      this.numberoflikes,
+      this.numberofcomments,
+      this.numberofshares,
+      this.timeposted});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ListTile(
+            leading: const CircleAvatar(
+              child: Icon(Icons.face),
+            ),
+            title: Text(username ?? "John Doe"),
+            subtitle: Text(timeposted ?? ""),
+            trailing: const Icon(Icons.more_vert),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              status ?? "This is a sample status.",
+              style: const TextStyle(fontSize: 16),
+            ),
+          ),
+          const SizedBox(height: 15),
+          Container(
+            width: double.infinity,
+            height: 330,
+            decoration: const BoxDecoration(
+              color: Color(0xff7d07ed),
+            ),
+            child: const Center(
+              child: Icon(
+                Icons.image,
+                size: 80,
+                color: Color(0xffffffff),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.thumb_up_alt_outlined),
+                const SizedBox(width: 5),
+                Text(numberoflikes ?? "0"),
+              ],
+            ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.comment_outlined),
+                const SizedBox(width: 5),
+                Text(numberofcomments ?? "0"),
+              ],
+            ),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.share_outlined),
+                const SizedBox(width: 5),
+                Text(numberofshares ?? "0"),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
